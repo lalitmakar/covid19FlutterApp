@@ -39,8 +39,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 ),
                 FlatButton(
                   onPressed: () {
-                    bloc.dispose();
-                    Navigator.pop(context, false);
+                    Navigator.pop(context, true);
                   },
                   child: Text("Yes"),
                 ),
@@ -67,7 +66,19 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                 return Text('${snapshot.error.toString()}');
               }
               return Center(
-                child: CircularProgressIndicator(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      "Fetching data...",
+                      style: TextStyle(fontSize: 30.0, color: Colors.white),
+                    )
+                  ],
+                ),
               );
             }),
       ),
